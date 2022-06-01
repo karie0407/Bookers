@@ -1,11 +1,16 @@
 <h4>NEW BOOK</h4>
+<% if @book.errors.any? %>
+   <%= @book.errors.count %>
+   <ul>
+     <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+   </ul>
+<% end %>
 <%= form_with model: @book,url: '/books',method: :post do |f| %>
   <h5>Title</h5>
   <%= f.text_field :title %>
-  
   <h5>Body</h5>
   <%= f.text_area :body %>
-  
   <%= f.submit 'Create Book' %>
-  
 <% end %>

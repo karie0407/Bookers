@@ -4,9 +4,11 @@ class BooksController < ApplicationController
     @book = Book.new
   end
   def create
-   book = Book.new(book_params)
-   if book.save
+   @book = Book.new(book_params)
+   if @book.save
     redirect_to book_path(book.id), notice: 'Book was successfully created.'
+   else
+    render :new
    end
   end
   def index
@@ -24,10 +26,12 @@ class BooksController < ApplicationController
    redirect_to '/books'
   end
   def update
-   book = Book.find(params[:id])
-   if book.update(book_params)
+   @book = Book.find(params[:id])
+   if @book.update(book_params)
    redirect_to book_path(book.id), notice: 'Book was successfully updated.'
-  end
+  else
+   render :edit
+   end
   end
   private
    def book_params
