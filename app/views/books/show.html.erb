@@ -6,6 +6,6 @@
 <%= @book.title %></p>
 <p><strong>Body:</strong>
 <%= @book.body %></p>
-<a class="edit"><%= link_to "Edit", edit_book_path(@book.id) %></a>
+<span><%= link_to "Edit", edit_book_path(@book.id) %></span>
 |
-<a class="back" href="/books">Back</a>
+<span><%= link_to "Back",'/books', method: :get%></span>
